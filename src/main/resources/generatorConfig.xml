@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <classPathEntry location="F:\IdeaProjects\MavenRepositoryForCharlie\mysql\mysql-connector-java\6.0.6\mysql-connector-java-6.0.6.jar"/>
+    <classPathEntry location="F:\apache-maven-3.5.3\LocalWarehouse\mysql\mysql-connector-java\6.0.6\mysql-connector-java-6.0.6.jar"/>
     <context id="testTables" targetRuntime="MyBatis3" >
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -12,9 +12,9 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/charlie_web_demo?characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://localhost:3306/charlie_web_demo?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2b8&amp;rewriteBatchedStatements=true"
                         userId="root"
-                        password="p@ssw0rd">
+                        password="caoyang">
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
             NUMERIC 类型解析为java.math.BigDecimal -->
@@ -48,7 +48,10 @@
 
         <!-- 指定数据库表 -->
         <table tableName="user"></table>
-
+        <!-- 如果需要通配所有表 直接用sql的通配符    %即可 -->
+        <table schema="" tableName="%" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
             <columnOverride column="" javaType="" />
